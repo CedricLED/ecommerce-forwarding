@@ -1,0 +1,54 @@
+<div id="page-content-wrapper">
+  <div class="page-content card-panel">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">Username</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">DiscordID</th>
+                  <th scope="col">Code</th>
+                  <th scope="col">createdAt</th>
+                  <th scope="col">updatedAt</th>
+                  <th scope="col">Banned</th>
+                  <th scope="col">Ban</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each customers}}
+                  <tr>
+                    <form action="/customers/ban" method="post">
+                      <th scope="row">{{@index}}</th>
+                      <input type="hidden" name="id" value="{{this.id}}"></input>
+                      <input type="hidden" name="username" value="{{this.username}}"></input>
+                      <input type="hidden" name="email" value="{{this.email}}"></input>
+                      <input type="hidden" name="discordID" value="{{this.discordID}}"></input>
+                      <input type="hidden" name="code" value="{{this.code}}"></input>
+                      <input type="hidden" name="banned" value="{{this.banned}}"></input>
+                      <td>{{this.id}}</td>
+                      <td><span class="badge badge-secondary">{{this.username}}</span></td>
+                      <td><span class="badge badge-info">{{this.email}}</span></td>
+                      <td><span class="badge badge-dark">{{this.discordID}}</span></td>
+                      <td><span class="badge badge-dark">{{this.code}}</span></td>
+                      <td><span class="badge badge-dark">{{this.createdAt}}</span></td>
+                      <td><span class="badge badge-dark">{{this.updatedAt}}</span></td>
+                      <td><span class="badge badge-dark">{{this.banned}}</span></td>
+                      <td><button type="submit" class="btn btn-primary">Ban/Unban</button></td>
+                      <td><button type="submit" formaction="/customers/delete" class="btn btn-primary">Delete</button></td>
+                    </form>
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

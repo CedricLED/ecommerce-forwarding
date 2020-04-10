@@ -1,0 +1,52 @@
+<div id="page-content-wrapper">
+  <div class="page-content card-panel">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">CustomerID</th>
+                  <th scope="col">idName</th>
+                  <th scope="col">idNumber</th>
+                  <th scope="col">idFront</th>
+                  <th scope="col">idRear</th>
+                  <th scope="col">createdAt</th>
+                  <th scope="col">updatedAt</th>
+                  <th scope="col">View</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each photoIDs}}
+                  <tr>
+                    <form action="/ids/delete" method="post">
+                      <th scope="row">{{@index}}</th>
+                      <input type="hidden" name="id" value="{{this.id}}"></input>
+                      <input type="hidden" name="customerId" value="{{this.customerId}}"></input>
+                      <input type="hidden" name="idName" value="{{this.idName}}"></input>
+                      <input type="hidden" name="idNumber" value="{{this.idNumber}}"></input>
+                      <input type="hidden" name="idFront" value="{{this.idFront}}"></input>
+                      <input type="hidden" name="idRear" value="{{this.idRear}}"></input>
+                      <td><span class="badge badge-secondary">{{this.customerId}}</span></td>
+                      <td><span class="badge badge-info">{{this.idName}}</span></td>
+                      <td><span class="badge badge-dark">{{this.idNumber}}</span></td>
+                      <td><span class="badge badge-dark">{{this.idFront}}</span></td>
+                      <td><span class="badge badge-dark">{{this.idRear}}</span></td>
+                      <td><span class="badge badge-dark">{{this.createdAt}}</span></td>
+                      <td><span class="badge badge-dark">{{this.updatedAt}}</span></td>
+                      <td><a href="/ids/view/{{this.id}}" class="btn btn-primary">View</button></td>
+                      <td><button type="submit" class="btn btn-primary">Delete</button></td>
+                    </form>
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

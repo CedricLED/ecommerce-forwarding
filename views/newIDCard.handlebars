@@ -1,0 +1,45 @@
+<div>
+  <form action="/ids/new" method="post">
+    <div class="card css-card">
+      <div class="card-header">
+        <div class="css-card-icon">
+          <i class="fas fa-chart-bar"></i>
+        </div>
+        <div class="css-card-title"> New ID </div>
+      </div>
+      <div class="card-body ">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <select name="customerId" class="form-control" required>
+              <option selected value="">Choose...</option>
+              {{#each customers}}
+              <option value="{{this.id}}">{{this.email}}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="idName">ID Name On Card</label>
+            <input type="text" class="form-control" name="idName" pattern="^[A-z ,.'-]+$" minlength="8" placeholder="example: John Appleseed" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="idNumber">ID Number On Card</label>
+            <input type="text" class="form-control" name="idNumber" pattern="([A-Za-z0-9])\w+" minlength="8" placeholder="example: VB2312A231" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="idFront">ID Front</label>
+            <input type="text" class="form-control" name="idFront" placeholder="file location in google drive" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="idRear">ID Rear</label>
+            <input type="text" class="form-control" name="idRear" placeholder="file location in google drive" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Create ID</button>
+      </div>
+    </div>
+  </form>
+</div>

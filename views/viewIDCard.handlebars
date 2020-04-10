@@ -1,0 +1,92 @@
+<div id="page-content-wrapper">
+  <div class="page-content card-panel">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card css-card">
+            <div class="card-header">
+              <div class="css-card-icon">
+                <i class="fas fa-chart-bar"></i>
+              </div>
+              <div class="css-card-title"> Edit Photo ID </div>
+            </div>
+            <div class="card-body ">
+              <form action="/ids/edit" method="post">
+                <input type="hidden" name="id" value="{{photoID.id}}">
+                <input type="hidden" name="customerId" value="{{photoID.customerId}}">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="idName">ID Name On Card</label>
+                    <input type="text" class="form-control" name="idName" pattern="^[A-z ,.'-]+$" minlength="8" value="{{photoID.idName}}" required>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="idNumber">ID Number On Card</label>
+                    <input type="text" class="form-control" name="idNumber" pattern="([A-Za-z0-9])\w+" minlength="8" value="{{photoID.idNumber}}" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="idFront">ID Front</label>
+                    <input type="text" class="form-control" name="idFront" value="{{photoID.idFront}}" required>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="idRear">ID Rear</label>
+                    <input type="text" class="form-control" name="idRear" value="{{photoID.idRear}}" required>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Photo ID</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card css-card">
+            <div class="card-header">
+              <div class="css-card-icon">
+                <i class="fas fa-chart-bar"></i>
+              </div>
+              <div class="css-card-title"> Customer Info </div>
+            </div>
+            <div class="card-body ">
+              <form action="/customers/edit" method="post">
+                <input type="hidden" name="id" value="{{customer.id}}">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="code">Identify code</label>
+                    <input type="text" class="form-control" name="code" value="{{customer.code}}" minlength="3" maxlength="3" required>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" name="username" value="{{customer.username}}" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="banned">Banned</label>
+                    <input type="text" class="form-control" name="banned" value="{{customer.banned}}" required>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" name="email" value="{{customer.email}}" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="discordID">Discord ID</label>
+                    <input type="text" class="form-control" name="discordID" value="{{customer.discordID}}" required>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="descrim">Descrim</label>
+                    <input type="text" class="form-control" name="descrim" value="{{customer.descrim}}" minlength="2" required>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

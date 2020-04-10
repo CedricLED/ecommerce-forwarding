@@ -1,0 +1,188 @@
+<div id="page-content-wrapper">
+  <div class="page-content card-panel">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card css-card">
+            <div class="card-header">
+              <div class="css-card-icon">
+                <i class="fas fa-chart-bar"></i>
+              </div>
+              <div class="css-card-title"> Edit Order </div>
+            </div>
+            <div class="card-body ">
+              <form action="/orders/edit" method="post">
+                <input type="hidden" name="orderID" value="{{order.id}}">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="code">Identify code</label>
+                    <input type="text" class="form-control" name="code" value="{{order.code}}" minlength="3" maxlength="3" required>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="plan">Plan</label>
+                    <select name="plan" class="form-control" required>
+                      <option selected value='{{order.plan}}'>{{order.plan}}</option>
+                      <option value='A'>A</option>
+                      <option value='B'>B</option>
+                      <option value='C'>C</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-xl-12">
+                  <div class="card css-card">
+                    <div class="card-header">
+                      <div class="css-card-icon">
+                        <i class="fas fa-chart-bar"></i>
+                      </div>
+                      <div class="css-card-title"> Recipient </div>
+                    </div>
+                    <div class="card-body ">
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="recName">Recipient Name</label>
+                          <input type="text" class="form-control" name="recName" value="{{order.recName}}" pattern="^[A-z ,.'-]+$" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="recPhone">Recipient Phone</label>
+                          <input type="tel" class="form-control" name="recPhone" value="{{order.recPhone}}" pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$" required>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="recAddr">Recipient Address</label>
+                          <input type="text" class="form-control" name="recAddr" value="{{order.recAddr}}" minlength="10" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="recCity">Recipient City</label>
+                          <input type="text" class="form-control" name="recCity" value="{{order.recCity}}" minlength="2" required>
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="recState">Province</label>
+                          <select name="recState" class="form-control" required>
+                            <option selected value="{{order.recState}}">{{order.recState}}</option>
+                            <option value='CN-AH'>Anhui Province</option>
+                            <option value='CN-BJ'>Beijing Municipality</option>
+                            <option value='CN-CQ'>Chongqing Municipality</option>
+                            <option value='CN-FJ'>Fujian Province</option>
+                            <option value='CN-GD'>Guangdong Province</option>
+                            <option value='CN-GS'>Gansu Province</option>
+                            <option value='CN-GX'>Guangxi Zhuang Autonomous Region</option>
+                            <option value='CN-GZ'>Guizhou Province</option>
+                            <option value='CN-HA'>Henan Province</option>
+                            <option value='CN-HB'>Hubei Province</option>
+                            <option value='CN-HE'>Hebei Province</option>
+                            <option value='CN-HI'>Hainan Province</option>
+                            <option value='CN-HK'>Hong Kong Special Administrative Region</option>
+                            <option value='CN-HL'>Heilongjiang Province</option>
+                            <option value='CN-HN'>Hunan Province</option>
+                            <option value='CN-JL'>Jilin Province</option>
+                            <option value='CN-JS'>Jiangsu Province</option>
+                            <option value='CN-JX'>Jiangxi Province</option>
+                            <option value='CN-LN'>Liaoning Province</option>
+                            <option value='CN-MO'>Macau Special Administrative Region</option>
+                            <option value='CN-NM'>Inner Mongolia Autonomous Region</option>
+                            <option value='CN-NX'>Ningxia Hui Autonomous Region</option>
+                            <option value='CN-QH'>Qinghai Province</option>
+                            <option value='CN-SC'>Sichuan Province</option>
+                            <option value='CN-SD'>Shandong Province</option>
+                            <option value='CN-SH'>Shanghai Municipality</option>
+                            <option value='CN-SN'>Shaanxi Province</option>
+                            <option value='CN-SX'>Shanxi Province</option>
+                            <option value='CN-TJ'>Tianjin Municipality</option>
+                            <option value='CN-TW'>Taiwan Province</option>
+                            <option value='CN-XJ'>Xinjiang Uyghur Autonomous Region</option>
+                            <option value='CN-XZ'>Tibet Autonomous Region</option>
+                            <option value='CN-YN'>Yunnan Province</option>
+                            <option value='CN-ZJ'>Zhejiang Province</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Order</button>
+              </form>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Tracking Number</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Update</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each packages}}
+                  <tr>
+                    <form action="/packages/edit" method="post">
+                      <input type="hidden" name="orderID" value="{{../order.id}}">
+                      <input type="hidden" name="packageID" value="{{this.id}}">
+                      <th scope="row">{{@index}}</th>
+                      <td><input type="text" class="form-control" name="trackingNumber" value="{{this.trackingNumber}}" required minlength="7" maxlength="64"></input></td>
+                      <td><select name="category" class="form-control" required>
+                          <option selected value="{{this.category}}">{{this.category}}</option>
+                          <option value='shoes'>Shoes</option>
+                          <option value='clothes'>Clothes</option>
+                          <option value='misc'>Misc</option>
+                        </select></td>
+                      <td><input type="number" class="form-control" name="amount" value="{{this.amount}}" required min="1" max="250"></input></td>
+                      <td><button type="submit" class="btn btn-primary">Update</button></td>
+                      <td><button type="submit" formaction="/packages/delete" class="btn btn-primary">Delete</button></td>
+                    </form>
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      {{#if photoID}}
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card css-card">
+            <div class="card-header">
+              <div class="css-card-icon">
+                <i class="fas fa-chart-bar"></i>
+              </div>
+              <div class="css-card-title"> Photo ID </div>
+            </div>
+            <div class="card-body ">
+              <form action="/ids/edit" method="post">
+                <input type="hidden" name="id" value="{{photoID.id}}">
+                <input type="hidden" name="customerId" value="{{photoID.customerId}}">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="idName">ID Name On Card</label>
+                    <input type="text" class="form-control" name="idName" pattern="^[A-z ,.'-]+$" minlength="8" value="{{photoID.idName}}" readonly>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="idNumber">ID Number On Card</label>
+                    <input type="text" class="form-control" name="idNumber" pattern="([A-Za-z0-9])\w+" minlength="8" value="{{photoID.idNumber}}" readonly>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="idFront">ID Front</label>
+                    <input type="text" class="form-control" name="idFront" value="{{photoID.idFront}}" readonly>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="idRear">ID Rear</label>
+                    <input type="text" class="form-control" name="idRear" value="{{photoID.idRear}}" readonly>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+    </div>
+  </div>
+</div>

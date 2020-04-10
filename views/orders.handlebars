@@ -1,0 +1,41 @@
+<div id="page-content-wrapper">
+  <div class="page-content card-panel">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">Paid</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Plan</th>
+                  <th scope="col">View</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each orders}}
+                  <tr>
+                    <th scope="row">{{@index}}</th>
+                    <td>{{this.id}}</td>
+                    <td><span class="badge badge-secondary">{{this.paid}}</span></td>
+                    <td><span class="badge badge-info">{{this.status}}</span></td>
+                    <td><span class="badge badge-dark">{{this.plan}}</span></td>
+                    <td><a class="btn btn-primary" href="/orders/view/{{this.id}}">View</button></td>
+                    <form action="/orders/delete" method="post">
+                      <input type="hidden" name="id" value="{{this.id}}"></input>
+                      <td><button type="submit" class="btn btn-primary">Delete</button></td>
+                    </form>
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+{
+  "development": {
+    "admins": ["discordUserID","discordUserID","discordUserID"],
+    "storage": "dev-db.sqlite3",
+    "dialect": "sqlite",
+    "discord": {
+      "client_id": "",
+      "client_secret": "",
+      "callback_url": "https://placeholder.com/auth/discord/callback",
+      "guild": "",
+      "token": ""
+    },
+    "site": {
+      "domain": "https://placeholder.com",
+      "port": "3000",
+      "session_secret": ""
+    }
+  },
+  "test": {
+    "username": "",
+    "password": ,
+    "database": "",
+    "host": "",
+    "dialect": "mysql",
+    "discord": {
+      "client_id": "",
+      "client_secret": "",
+      "callback_url": "http://localhost:3000/auth/discord/callback",
+      "guild": "",
+      "token": ""
+    },
+    "site": {
+      "domain": "http://localhost:3000",
+      "port": "3000",
+      "session_secret": ""
+    }
+  },
+  "production": {
+    "username": "",
+    "password": ,
+    "database": "",
+    "host": "",
+    "dialect": "mysql",
+    "discord": {
+      "client_id": "",
+      "client_secret": "",
+      "callback_url": "http://localhost:3000/auth/discord/callback",
+      "guild": "",
+      "token": ""
+    },
+    "site": {
+      "domain": "http://localhost:3000",
+      "port": "3000",
+      "session_secret": ""
+    }
+  }
+}
